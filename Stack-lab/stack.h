@@ -1,4 +1,9 @@
 #pragma once
+
+#include <iostream>
+
+using namespace std;
+
 template <class T>
 class TStack {
 	T* arr;
@@ -6,7 +11,8 @@ class TStack {
 	int maxsize;
 public:
 	TStack(int _maxsize = 10) {
-		if (_maxsize <= 0) throw maxsize;
+		if (_maxsize <= 0)
+			throw _maxsize;
 		maxsize = _maxsize;
 		size = 0;
 		arr = new T[maxsize];
@@ -51,19 +57,49 @@ public:
 	}
 
 	T top() {                             // возвращает вершину
-		if (isempty()) throw - 1;
+		if (isempty()) throw -1;
 		return arr[size - 1];
 	}
 
 	T pop() {                             // удаляет верхний элемент и возвращает его
-		if (isempty()) throw - 1;
+		if (isempty()) throw -1;
 		size--;
 		return arr[size];
 	}
 
 	void push(const T& el) {              // добавляет элемент
-		if (isfull()) throw - 1;
+		if (isfull()) throw -1;
 		arr[size] = el;
 		size++;
+	}
+
+	int getsize() {
+		return size;
+	}
+
+	int getmaxsize() {
+		return maxsize;
+	}
+
+	T operator[](int n) {
+		if (n < 0 || n >= maxsize)
+			throw n;
+		return arr[n];
+	}
+
+	int operator==(const TStack& st) const {
+		if (maxsize != st.maxsize)
+			return 0;
+		if (size != st.size)
+			return 0;
+		for (int i = 0; i < size; i++) {
+			if (arr[i] != st.arr[i])
+				return 0;
+		}
+		return 1;
+	}
+
+	int operator!=(const TStack& st) const {
+		return !(*this == st);
 	}
 };
