@@ -2,7 +2,7 @@
 
 #include "gtest.h"
 
-TEST(TStack, TStackcreate_stack_with_positive_length){
+TEST(TStack, TStack_create_stack_with_positive_length){
   ASSERT_NO_THROW(TStack<int> st(3));
 }
 
@@ -25,9 +25,7 @@ TEST(TStack, copied_stack_is_equal_to_source_one)
 		a.push(i);
 	}
 	b = a;
-	for (i = 0; i < 3; i++) {
-		EXPECT_EQ(i, b[i]);
-	}
+	EXPECT_EQ(a, b);
 }
 
 TEST(TStack, copied_stack_has_its_own_memory)
@@ -39,7 +37,7 @@ TEST(TStack, copied_stack_has_its_own_memory)
 	b = a;
 	int tmp = b.pop();
 	b.push(5);
-	EXPECT_NE(a.top(), b.top());
+	EXPECT_NE(a, b);
 }
 
 TEST(TStack, can_get_size){
@@ -92,4 +90,3 @@ TEST(TStack, assign_operator_changes_stack_maxsize)
 	b = a;
 	EXPECT_EQ(3, b.getmaxsize());
 }
-
