@@ -6,8 +6,9 @@ class TCalculator {
 	string infix;
 	string postfix;
 	TStack<char> stc;
+	TStack<double> StD;
 public:
-	TCalculator(string _infix = "") : stc(_infix.size() + 1) {
+	TCalculator(string _infix = "") : stc(_infix.size() + 1), StD(_infix.size() + 1) {
 		infix = _infix;
 	}
 
@@ -24,4 +25,5 @@ public:
 	int check();
 	int priority(char sym);
 	void topostfix();
+	double calc();
 };

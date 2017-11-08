@@ -53,3 +53,32 @@ void TCalculator::topostfix() {
 		}
 	}
 }
+
+double TCalculator::calc() {
+	StD.clear();
+	for (int i = 0; i < postfix.size(); i++) {
+		if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/' || postfix[i] == '^') {
+			double op1, op2;
+			op2 = StD.pop();
+			op1 = StD.pop();
+			switch (postfix[i]) {
+			case '+': StD.push(op1 + op2); break;
+			case '-': StD.push(op1 - op2); break;
+			case '*': StD.push(op1 * op2); break;
+			case '/': StD.push(op1 / op2); break;
+			case '^': StD.push(pow(op1, op2)); break;
+			}
+		}
+		if ((postfix[i] >= '0' && postfix[i] <= '9') || postfix[i] == '.') {
+			char* tmp;
+			double res = strtod(&postfix[i], &tmp);
+			int di = tmp - &postfix[i];
+			i += di - 1;
+			StD.push(res);
+		}
+	}
+	double result = StD.pop();
+	if (!StD.isempty())
+		throw - 2;
+	return result;
+}
