@@ -147,9 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TCalculator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stack.h" />
+    <ClInclude Include="TCalculator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

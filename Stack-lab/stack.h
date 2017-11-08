@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -101,5 +102,9 @@ public:
 
 	int operator!=(const TStack& st) const {
 		return !(*this == st);
+	}
+
+	void clear() {
+		size = 0;
 	}
 };
