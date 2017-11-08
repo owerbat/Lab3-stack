@@ -29,6 +29,8 @@ int TCalculator::priority(char sym) {
 }
 
 void TCalculator::topostfix() {
+	if (!check())
+		throw - 3;
 	postfix = "";
 	stc.clear();
 	string buf = '(' + infix + ')';
