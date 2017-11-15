@@ -29,34 +29,37 @@ int TCalculator::priority(char sym) {
 }
 
 void TCalculator::topostfix() {
-	if (!check())
-		throw - 3;
-	postfix = "";
-	stc.clear();
-	string buf = '(' + infix + ')';
-	for (int i = 0; i < buf.size(); i++) {
-		if (buf[i] == '(')
-			stc.push('(');
-		if ((buf[i] <= '9' && buf[i] >= '0') || buf[i] == '.')
-			postfix += buf[i];
-		if (buf[i] == ')') {
-			char el = stc.pop();
-			while (el != '(') {
-				postfix += el;
-				el = stc.pop();
+	if (check()) {
+		postfix = "";
+		stc.clear();
+		string buf = '(' + infix + ')';
+		for (int i = 0; i < buf.size(); i++) {
+			if (buf[i] == '(')
+				stc.push('(');
+			if ((buf[i] <= '9' && buf[i] >= '0') || buf[i] == '.')
+				postfix += buf[i];
+			if (buf[i] == ')') {
+				char el = stc.pop();
+				while (el != '(') {
+					postfix += el;
+					el = stc.pop();
+				}
 			}
-		}
-		if (buf[i] == '+' || buf[i] == '-' || buf[i] == '*' || buf[i] == '/' || buf[i] == '^') {
-			postfix += " ";
-			while (priority(buf[i]) <= priority(stc.top())) {
-				postfix += stc.pop();
+			if (buf[i] == '+' || buf[i] == '-' || buf[i] == '*' || buf[i] == '/' || buf[i] == '^') {
+				postfix += " ";
+				while (priority(buf[i]) <= priority(stc.top())) {
+					postfix += stc.pop();
+				}
+				stc.push(buf[i]);
 			}
-			stc.push(buf[i]);
 		}
 	}
+	else
+		throw - 3;
 }
 
 double TCalculator::calc() {
+	topostfix();
 	StD.clear();
 	for (int i = 0; i < postfix.size(); i++) {
 		if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/' || postfix[i] == '^') {
