@@ -35,3 +35,9 @@ TEST(TCalculator, throw_when_try_topostfix_incorrect_string) {
 
 	ASSERT_ANY_THROW(a.topostfix());
 }
+
+TEST(TCalculator, throw_when_try_to_calculate_incorrect_string) {
+	TCalculator a(")2+3)(");
+
+	ASSERT_ANY_THROW(a.calc());
+}
