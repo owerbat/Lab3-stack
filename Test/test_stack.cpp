@@ -114,3 +114,4 @@ TEST(TStack, assign_operator_changes_stack_maxsize)
 
 	EXPECT_EQ(3, b.getmaxsize());
 }
+
