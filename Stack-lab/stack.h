@@ -58,18 +58,18 @@ public:
 	}
 
 	T top() {                             // возвращает вершину
-		if (isempty()) throw -1;
+		if (isempty()) throw "top error";
 		return arr[size - 1];
 	}
 
 	T pop() {                             // удаляет верхний элемент и возвращает его
-		if (isempty()) throw -1;
+		if (isempty()) throw "pop error";
 		size--;
 		return arr[size];
 	}
 
 	void push(const T& el) {              // добавляет элемент
-		if (isfull()) throw -1;
+		if (isfull()) throw "push error";
 		arr[size] = el;
 		size++;
 	}
@@ -82,11 +82,11 @@ public:
 		return maxsize;
 	}
 
-	T operator[](int n) {
+	/*T operator[](int n) {
 		if (n < 0 || n >= maxsize)
 			throw n;
 		return arr[n];
-	}
+	}*/
 
 	int operator==(const TStack& st) const {
 		if (maxsize != st.maxsize)

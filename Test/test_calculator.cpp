@@ -41,3 +41,72 @@ TEST(TCalculator, throw_when_try_to_calculate_incorrect_string) {
 
 	ASSERT_ANY_THROW(a.calc());
 }
+
+TEST(TCalculator, can_get_infix) {
+	TCalculator a("2+2");
+
+	EXPECT_EQ("2+2", a.getinfix());
+}
+
+TEST(TCalculator, can_set_infix) {
+	TCalculator a("");
+
+	a.setinfix("2+2");
+
+	EXPECT_EQ("2+2", a.getinfix());
+}
+
+TEST(TCalculator, can_get_postfix) {
+	TCalculator a("(2+3)*4");
+
+	a.topostfix();
+
+	EXPECT_EQ("2 3+ 4*", a.getpostfix());
+}
+
+TEST(TCalculator, can_add_numbers) {
+	TCalculator a("2+2");
+
+	EXPECT_EQ(4, a.calc());
+}
+
+TEST(TCalculator, can_substract_numbers) {
+	TCalculator a("5-2");
+
+	EXPECT_EQ(3, a.calc());
+}
+
+TEST(TCalculator, can_multiply_numbers) {
+	TCalculator a("2*7");
+
+	EXPECT_EQ(14, a.calc());
+}
+
+TEST(TCalculator, can_divide_numbers) {
+	TCalculator a("15/3");
+
+	EXPECT_EQ(5, a.calc());
+}
+
+TEST(TCalculator, can_pow_numbers) {
+	TCalculator a("3^3");
+
+	EXPECT_EQ(27, a.calc());
+}
+
+TEST(TCalculator, can_work_with_double_numbers) {
+	TCalculator a("((2.6+7.8)^0.3-4.5/8.7)*5.55");
+
+	EXPECT_EQ((pow(2.6 + 7.8, 0.3) - 4.5 / 8.7)*5.55, a.calc());
+}
+
+TEST(TCalculator, can_calculate_a_large_string) {
+	TCalculator a("9+(5*45-(7+7^4)*5/(7*2+21/254)+4*9^6)*(7+34+9*(9+3+54^7/8-6+562-5)*6)/10^17");
+
+	double result = 9 + (5 * 45 - (7 + pow(7, 4)) * 5 / (7 * 2 + 21 / 254) + 4 * pow(9, 6))*(7 + 34 + 9 * (9 + 3 + pow(54, 7) / 8 - 6 + 562 - 5) * 6) / pow(10, 17);
+	cout.precision(100);
+	cout << a.calc() << endl << result << endl;
+
+	EXPECT_EQ(result, a.calc());
+	//EXPECT_EQ(201.064, a.calc());
+}
