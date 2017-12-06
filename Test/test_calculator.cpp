@@ -101,9 +101,9 @@ TEST(TCalculator, can_work_with_double_numbers) {
 }
 
 TEST(TCalculator, can_calculate_a_large_string) {
-	TCalculator a("9+(5*45-(7+7^4)*5/(7*2+21/254)+4*9^6)*(7+34+9*(9+3+54^7/8-6+562-5)*6)/10^17");
+	TCalculator a("9+(5*45-(7+7^4)*5/(7*2+21/254)+4*9^6)*(7+34+9*(9+3+4^7/8-6+562-5)*6)/10^7");
 
-	double result = 9 + (5 * 45 - (7 + pow(7, 4)) * 5 / (7 * 2 + 21 / 254) + 4 * pow(9, 6))*(7 + 34 + 9 * (9 + 3 + pow(54, 7) / 8 - 6 + 562 - 5) * 6) / pow(10, 17);
+	double result = 9 + (5 * 45 - (7 + pow(7, 4)) * 5 / (7 * 2 + 21.0 / 254) + 4 * pow(9, 6))*(7 + 34 + 9 * (9 + 3 + pow(4, 7) / 8 - 6 + 562 - 5) * 6) / pow(10, 7);
 	cout.precision(100);
 	cout << a.calc() << endl << result << endl;
 
