@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stack.h"
+#include <string>
 
 class TCalculator {
 	string infix;

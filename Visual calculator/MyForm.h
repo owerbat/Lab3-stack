@@ -92,7 +92,6 @@ namespace Visual_calculator {
 			this->button1->Text = L"=";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			this->button1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::button1_KeyPress);
 			// 
 			// textBox2
 			// 
@@ -130,12 +129,6 @@ namespace Visual_calculator {
 			textBox2->Text = "Input error";
 		}
 	}
-private: System::Void button1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
-
-	if (e->KeyChar == 13) {
-		button1_Click(sender, e);
-	}
-}
 private: System::Void textBox1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
 
 	if (e->KeyChar == 13) {

@@ -1,6 +1,5 @@
 #include "Stack.h"
 #include "TCalculator.h"
-#include <Bits.h>
 
 int main() {
 	
@@ -8,8 +7,13 @@ int main() {
 	string str;
 	cin >> str;
 
-	TCalculator result(str);
-	cout << "Result: " << result.calc() << endl;
+	try {
+		TCalculator result(str);
+		cout << "Result: " << result.calc() << endl;
+	}
+	catch (...) {
+		cout << "Input error\n";
+	}
 
 	return 0;
 }

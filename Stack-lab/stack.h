@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -57,18 +56,18 @@ public:
 		return 0;
 	}
 
-	T top() {                             // возвращает вершину
+	T top() {
 		if (isempty()) throw "top error";
 		return arr[size - 1];
 	}
 
-	T pop() {                             // удаляет верхний элемент и возвращает его
+	T pop() {
 		if (isempty()) throw "pop error";
 		size--;
 		return arr[size];
 	}
 
-	void push(const T& el) {              // добавляет элемент
+	void push(const T& el) {
 		if (isfull()) throw "push error";
 		arr[size] = el;
 		size++;
