@@ -82,12 +82,6 @@ public:
 		return maxsize;
 	}
 
-	/*T operator[](int n) {
-		if (n < 0 || n >= maxsize)
-			throw n;
-		return arr[n];
-	}*/
-
 	int operator==(const TStack& st) const {
 		if (maxsize != st.maxsize)
 			return 0;

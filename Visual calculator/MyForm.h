@@ -126,8 +126,8 @@ namespace Visual_calculator {
 			double res = a.calc();
 			textBox2->Text = System::Convert::ToString(res);
 		}
-		catch (int) {
-			textBox2->Text = "Error";
+		catch (...) {
+			textBox2->Text = "Input error";
 		}
 	}
 private: System::Void button1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
